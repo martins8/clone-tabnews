@@ -12,10 +12,10 @@
   },
   "license": "MIT",
   "author": "",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev"
   },
   "dependencies": {
     "next": "^13.1.6",
