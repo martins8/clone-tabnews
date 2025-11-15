@@ -1,9 +1,5 @@
 function Home() {
-<<<<<<< HEAD
-   return <h1> alô cururu </h1>
-=======
-   return <h1> Olá sapo cururu na beira do rio </h1>
->>>>>>> a6666aa (modifie h1 text)
+   return <h1> Oi você que está lendo, você está bem? :D </h1>
 }
 
 export default Home;
