@@ -7,23 +7,28 @@ async function query(queryObject) {
     user: process.env.POSTGRES_USER,
     database: process.env.POSTGRES_DB,
     password: process.env.POSTGRES_PASSWORD,
-    ssl: process.env.NODE_ENV === "development" ? false : true,
+    ssl: getSSLValues(),
   });
   try {
     await client.connect();
-    console.log("conexão estabelecida");
     const result = await client.query(queryObject);
-    console.log("query alcançada");
     return result;
   } catch (error) {
     console.error(error);
     throw error;
   } finally {
     await client.end();
-    console.log("conexão finalizada");
   }
 }
 
 export default {
   query: query,
 };
+
+function getSSLValues() {
+  //caso precise de algum certificado
+  if (process.env.POSTGRES_CA) {
+    return { ca: process.env.POSTGRES_CA };
+  }
+  return process.env.NODE_ENV === "development" ? false : true;
+}
